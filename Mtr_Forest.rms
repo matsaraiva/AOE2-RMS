@@ -1,0 +1,455 @@
+
+/* Forest Map by Materios */
+
+
+
+start_random
+	percent_chance	50 /* Gelido */
+	
+	#define GELIDO
+	
+	#const Domestic_FoodBoy 						594 	/* SHEEP */
+	#const Pacific_FoodBoy_A 						65 		/* DEER */
+
+	#const Lureable_FoodBoy 						48 		/* BOAR */
+
+	#const Predator_A 								126 	/* WOLF */
+	#const Predator_B 								486 	/* BEAR */	
+
+	#const Bird_A									96 		/* HAWK */
+
+	#const A_Tree 									413 	/* SNOW_PINE */
+	#const B_Tree 									350 	/* PINE */
+
+	#const Fruit_Bush 								59 		/* FORAGE */
+
+	#const FOREST_A 								19 		/* PINE_FOREST */
+	#const FOREST_B 								21 		/* SNOW_FOREST */
+
+	#const Terra									0 		/* GRASS */
+	#const Terra2									34 		/* GRASS_SNOW */
+	
+/* ****************************************************************************** */
+	
+	percent_chance	50 /* Tropical */
+	
+	#define TROPICAL
+	
+	#const Domestic_FoodBoy 						833 	/* TURKEY */
+	#const Pacific_FoodBoy_A 						65 		/* DEER */
+
+	#const Lureable_FoodBoy 						822 	/* JAVELINA */
+
+	#const Predator_A 								812 	/* JAGUAR */
+	#const Predator_B 								812 	/* JAGUAR */
+
+	#const Bird_A									816 	/* MACAW */
+
+	#const A_Tree 									351 	/* PALM_TREE */
+	#const B_Tree 									351 	/* PALM_TREE */
+
+	#const Fruit_Bush 								1059 	/* ORANGE */
+
+	#const FOREST_A 								17 		/* JUNGLE */
+	#const FOREST_B 								17 		/* JUNGLE */
+
+	#const Terra									0 		/* GRASS */
+	#const Terra2									5 		/* LEAVES */
+
+/* ****************************************************************************** */
+	
+	percent_chance	0 /* Chuvosa */
+	
+	#define CHUVA
+	
+	#const Domestic_FoodBoy 						1142 	/* WATERBUFFALO +50 Food */
+	#const Pacific_FoodBoy_A 						65 		/* DEER */
+
+	#const Lureable_FoodBoy 						1139 	/* RHINOCEROS +60 Food */
+
+	#const Predator_A 								1137 	/* TIGER */
+	#const Predator_B 								1135 	/* KOMODO */
+
+	#const Bird_A									816 	/* MACAW */
+
+	#const A_Tree 									351 	/* PALM_TREE */
+	#const B_Tree 									351 	/* PALM_TREE */
+
+	#const Fruit_Bush 								59 		/* FORAGE */
+
+	#const FOREST_A 								56 		/* RAIN_FOREST */
+	#const FOREST_B 								56 		/* RAIN_FOREST */
+
+	#const Terra									60 		/* JUNGLE_GRASS */
+	#const Terra2									62 		/* JUNGLE_LEAVES */
+	
+end_random
+
+<PLAYER_SETUP>
+	random_placement 
+
+<LAND_GENERATION>
+
+base_terrain Terra
+
+create_player_lands 
+{            
+	terrain_type								Terra
+	land_percent                  			    50
+	base_size              			            13
+	other_zone_avoidance_distance    			6
+}
+
+<ELEVATION_GENERATION>
+create_elevation       							5
+{
+  base_terrain                  				Terra   
+  number_of_clumps 								10
+  number_of_tiles 								4200
+  set_scale_by_groups
+  set_scale_by_size           
+}
+
+<TERRAIN_GENERATION>
+create_terrain FOREST_A
+{
+	base_terrain								Terra
+	land_percent								32
+	number_of_clumps							24
+	clumping_factor								20
+	set_scale_by_groups
+	set_avoid_player_start_areas
+}
+
+create_terrain FOREST_B
+{
+	base_terrain								Terra
+	number_of_tiles								540
+	number_of_clumps							5
+	clumping_factor								20
+	set_scale_by_size
+	set_scale_by_groups
+	set_avoid_player_start_areas
+	spacing_to_other_terrain_types				2
+}
+
+create_terrain Terra2
+{
+	base_terrain								Terra
+	if GELIDO
+		clumping_factor							10
+		number_of_clumps						20
+	else
+		clumping_factor							2
+		number_of_clumps						25
+	endif
+	land_percent								35
+	set_scale_by_groups
+}
+
+<OBJECTS_GENERATION>
+create_object TOWN_CENTER
+{
+	set_place_for_every_player	
+	min_distance_to_players						0
+	max_distance_to_players						0
+}		
+
+create_object VILLAGER
+{
+	set_place_for_every_player
+
+	if REGICIDE
+		number_of_objects						10
+	else
+		number_of_objects						1
+	endif
+
+	min_distance_to_players						6
+	max_distance_to_players						7
+	temp_min_distance_group_placement			1
+}
+
+	if REGICIDE
+		create_object CASTLE
+{
+	set_place_for_every_player
+	min_distance_to_players						12
+	max_distance_to_players						14
+}
+
+		create_object KING
+{
+	set_place_for_every_player
+	min_distance_to_players						8
+	max_distance_to_players						10
+}		
+
+		create_object SCOUT
+{
+	set_place_for_every_player
+	min_distance_to_players						7
+	max_distance_to_players						9
+}
+	else
+		create_object SCOUT
+		{
+			set_place_for_every_player
+			min_distance_to_players				7
+			max_distance_to_players				9
+		}
+	endif
+
+create_object A_Tree
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							2
+	min_distance_to_players						4
+	max_distance_to_players						5
+	min_distance_group_placement				2
+}
+	
+create_object B_Tree
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							2
+	min_distance_to_players						6
+	max_distance_to_players						7
+	min_distance_group_placement				2
+}
+	
+create_object A_Tree
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	min_distance_to_players						8
+	max_distance_to_players						8
+	temp_min_distance_group_placement			2
+}
+
+create_object B_Tree
+{
+	if GELIDO
+		number_of_objects						42
+	else
+		number_of_objects						64
+	endif
+	min_distance_to_players						20
+	set_scaling_to_map_size
+	min_distance_group_placement				1
+}
+
+create_object Domestic_FoodBoy
+{
+	set_place_for_every_player
+	set_loose_grouping
+	min_distance_to_players						3
+	max_distance_to_players						3
+}
+
+create_object Domestic_FoodBoy
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							3
+	set_loose_grouping
+	min_distance_to_players						10
+	max_distance_to_players						10
+}
+
+create_object Domestic_FoodBoy
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							2
+	number_of_groups							5
+	group_placement_radius						2
+	set_loose_grouping
+	min_distance_to_players						16
+	min_distance_group_placement				2
+	temp_min_distance_group_placement			12
+}
+
+create_object Lureable_FoodBoy
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							2
+	min_distance_to_players						16
+	max_distance_to_players						20
+	min_distance_group_placement				2
+	temp_min_distance_group_placement			12
+}
+
+create_object Lureable_FoodBoy
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							1
+	min_distance_to_players						28
+	max_distance_to_players						32
+	min_distance_group_placement				2
+	temp_min_distance_group_placement			12
+}
+
+if GELIDO
+	create_object Pacific_FoodBoy_A
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							4
+	set_loose_grouping
+	group_placement_radius						4
+	min_distance_to_players						16
+	max_distance_to_players						20
+	min_distance_group_placement				2
+}
+	create_object Pacific_FoodBoy_A
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							3
+	number_of_groups							2
+	set_loose_grouping
+	group_placement_radius						4
+	min_distance_to_players						24
+	min_distance_group_placement				4
+}
+endif
+
+create_object Predator_A
+{
+	number_of_objects							1
+	number_of_groups							5
+	group_variance								2
+	set_loose_grouping
+	group_placement_radius						7
+	min_distance_to_players						22
+	set_scaling_to_map_size
+	min_distance_group_placement				2
+	temp_min_distance_group_placement			16
+}
+
+create_object Predator_B
+{
+	number_of_objects							1
+	number_of_groups							3
+	set_loose_grouping
+	group_placement_radius						7
+	min_distance_to_players						32
+	set_scaling_to_map_size
+	min_distance_group_placement				2
+	temp_min_distance_group_placement			16
+}
+
+create_object Bird_A
+{
+	number_of_objects							10
+	set_scaling_to_map_size
+}
+
+create_object Fruit_Bush
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	if GELIDO
+		number_of_objects						7
+	else
+		number_of_objects						9
+	endif
+	set_tight_grouping
+	min_distance_to_players						10
+	max_distance_to_players						12
+	min_distance_group_placement				6
+}
+
+create_object Fruit_Bush
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	if GELIDO
+		number_of_objects						5
+	else
+		number_of_objects						7
+		number_of_groups						2
+	endif
+	set_tight_grouping
+	min_distance_to_players						14
+	max_distance_to_players						38
+	min_distance_group_placement				4
+}
+
+create_object GOLD
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							4
+	set_tight_grouping
+	min_distance_to_players						12
+	max_distance_to_players						16
+	min_distance_group_placement				6
+}
+
+create_object GOLD
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							8
+	set_tight_grouping
+	min_distance_to_players						38
+	max_distance_to_players						42
+	min_distance_group_placement				6
+}
+
+create_object GOLD
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							6
+	set_tight_grouping
+	min_distance_to_players						44
+	max_distance_to_players						54
+	min_distance_group_placement				6
+}
+
+create_object STONE
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							5
+	set_tight_grouping
+	min_distance_to_players						14
+	max_distance_to_players						18
+	min_distance_group_placement				6
+}
+
+create_object STONE
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							4
+	set_tight_grouping
+	min_distance_to_players						22
+	max_distance_to_players						28
+	min_distance_group_placement				6
+}
+
+create_object STONE
+{
+	set_place_for_every_player
+	set_gaia_object_only
+	number_of_objects							4
+	set_tight_grouping
+	min_distance_to_players						32
+	max_distance_to_players						38
+	min_distance_group_placement				6
+}
+
+create_object RELIC
+{
+	number_of_objects             				5
+	min_distance_to_players						34
+	min_distance_group_placement				20
+}
