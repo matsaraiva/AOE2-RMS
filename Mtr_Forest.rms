@@ -1,7 +1,4 @@
-
 /* Forest Map by Materios */
-
-
 
 start_random
 	percent_chance	50 /* Gelido */
