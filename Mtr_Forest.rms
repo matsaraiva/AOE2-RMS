@@ -57,7 +57,7 @@ start_random
 	
 	percent_chance	0 /* Chuvosa */
 	
-	#define CHUVA
+	#define UMIDO
 	
 	#const Domestic_FoodBoy 						1142 	/* WATERBUFFALO +50 Food */
 	#const Pacific_FoodBoy_A 						65 		/* DEER */
@@ -248,9 +248,14 @@ create_object Domestic_FoodBoy
 
 create_object Domestic_FoodBoy
 {
+	if UMIDO
+		number_of_objects						2
+	else
+		number_of_objects						3
+	endif
+	
 	set_place_for_every_player
 	set_gaia_object_only
-	number_of_objects							3
 	set_loose_grouping
 	min_distance_to_players						10
 	max_distance_to_players						10
@@ -258,10 +263,17 @@ create_object Domestic_FoodBoy
 
 create_object Domestic_FoodBoy
 {
+	if UMIDO
+		number_of_objects						2
+		number_of_groups						3
+		group_variance							3
+	else
+		number_of_objects						2
+		number_of_groups						5
+	endif
+		
 	set_place_for_every_player
 	set_gaia_object_only
-	number_of_objects							2
-	number_of_groups							5
 	group_placement_radius						2
 	set_loose_grouping
 	min_distance_to_players						16
