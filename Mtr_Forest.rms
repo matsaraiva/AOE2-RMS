@@ -55,7 +55,7 @@ start_random
 
 /* ****************************************************************************** */
 	
-	percent_chance	0 /* Chuvosa */
+	percent_chance	0 /* Umifo */
 	
 	#define UMIDO
 	
@@ -248,12 +248,11 @@ create_object Domestic_FoodBoy
 
 create_object Domestic_FoodBoy
 {
-	if UMIDO
-		number_of_objects						2
-	else
+	if UMIDO /* 300 Food */
 		number_of_objects						3
+	else /* 300 Food */
+		number_of_objects						2
 	endif
-	
 	set_place_for_every_player
 	set_gaia_object_only
 	set_loose_grouping
@@ -263,11 +262,10 @@ create_object Domestic_FoodBoy
 
 create_object Domestic_FoodBoy
 {
-	if UMIDO
+	if UMIDO /* 750 Food */
 		number_of_objects						2
 		number_of_groups						3
-		group_variance							3
-	else
+	else /* 1000 Food */
 		number_of_objects						2
 		number_of_groups						5
 	endif
@@ -279,7 +277,8 @@ create_object Domestic_FoodBoy
 	min_distance_to_players						16
 	min_distance_group_placement				2
 	temp_min_distance_group_placement			12
-}
+}   
+/*comida domestica: 1200 umido 1400 resto*/
 
 create_object Lureable_FoodBoy
 {
@@ -291,6 +290,7 @@ create_object Lureable_FoodBoy
 	min_distance_group_placement				2
 	temp_min_distance_group_placement			12
 }
+/*comida de lure padrao: 800 umido 680 resto*/
 
 create_object Lureable_FoodBoy
 {
@@ -303,7 +303,9 @@ create_object Lureable_FoodBoy
 	temp_min_distance_group_placement			12
 }
 
-if GELIDO
+if TROPICAL
+	
+else
 	create_object Pacific_FoodBoy_A
 {
 	set_place_for_every_player
@@ -363,10 +365,10 @@ create_object Fruit_Bush
 {
 	set_place_for_every_player
 	set_gaia_object_only
-	if GELIDO
-		number_of_objects						7
-	else
+	if TROPICAL
 		number_of_objects						9
+	else
+		number_of_objects						7
 	endif
 	set_tight_grouping
 	min_distance_to_players						10
@@ -380,8 +382,11 @@ create_object Fruit_Bush
 	set_gaia_object_only
 	if GELIDO
 		number_of_objects						5
-	else
+	elseif TROPICAL
 		number_of_objects						7
+		number_of_groups						2
+	else
+		number_of_objects						5
 		number_of_groups						2
 	endif
 	set_tight_grouping
