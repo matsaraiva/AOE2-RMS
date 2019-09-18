@@ -1,7 +1,7 @@
 /* Forest Map by Materios */
 
 start_random
-	percent_chance	50 /* Gelido */
+	percent_chance	34 /* Gelido */
 	
 	#define GELIDO
 	
@@ -28,7 +28,7 @@ start_random
 	
 /* ****************************************************************************** */
 	
-	percent_chance	50 /* Tropical */
+	percent_chance	33 /* Tropical */
 	
 	#define TROPICAL
 	
@@ -55,7 +55,7 @@ start_random
 
 /* ****************************************************************************** */
 	
-	percent_chance	0 /* Umifo */
+	percent_chance	33 /* Umifo */
 	
 	#define UMIDO
 	
