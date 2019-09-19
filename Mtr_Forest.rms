@@ -2,9 +2,36 @@
 /* Forest Map by Materios */
 
 start_random
-	percent_chance	34 /* Gelido */
+	percent_chance	30 /* Gelido */
 	
 	#define GELIDO
+	
+	#const Domestic_FoodBoy 						594 	/* SHEEP */
+	#const Pacific_FoodBoy_A 						65 		/* DEER */
+
+	#const Lureable_FoodBoy 						48 		/* BOAR */
+
+	#const Predator_A 								126 	/* WOLF */
+	#const Predator_B 								486 	/* BEAR */	
+
+	#const Bird_A									96 		/* HAWK */
+
+	#const A_Tree 									413 	/* SNOW_PINE */
+	#const B_Tree 									413 	/* SNOW_PINE */
+
+	#const Fruit_Bush 								59 		/* FORAGE */
+
+	#const FOREST_A 								21 		/* SNOW_FOREST */
+	#const FOREST_B 								21 		/* SNOW_FOREST */
+
+	#const Terra									32 		/* SNOW */
+	#const Terra2									34 		/* GRASS_SNOW */
+	
+/* ****************************************************************************** */
+
+	percent_chance	0 /* Temperado */
+	
+	#define TEMPERADO
 	
 	#const Domestic_FoodBoy 						594 	/* SHEEP */
 	#const Pacific_FoodBoy_A 						65 		/* DEER */
@@ -22,14 +49,14 @@ start_random
 	#const Fruit_Bush 								59 		/* FORAGE */
 
 	#const FOREST_A 								19 		/* PINE_FOREST */
-	#const FOREST_B 								21 		/* SNOW_FOREST */
+	#const FOREST_B 								19 		/* PINE_FOREST */
 
 	#const Terra									0 		/* GRASS */
 	#const Terra2									34 		/* GRASS_SNOW */
 	
 /* ****************************************************************************** */
 	
-	percent_chance	33 /* Tropical */
+	percent_chance	20 /* Tropical */
 	
 	#define TROPICAL
 	
@@ -56,7 +83,7 @@ start_random
 
 /* ****************************************************************************** */
 	
-	percent_chance	33 /* Umifo */
+	percent_chance	50 /* Umido */
 	
 	#define UMIDO
 	
@@ -73,7 +100,7 @@ start_random
 	#const A_Tree 									351 	/* PALM_TREE */
 	#const B_Tree 									351 	/* PALM_TREE */
 
-	#const Fruit_Bush 								59 		/* FORAGE */
+	#const Fruit_Bush 								1059 	/* ORANGE */
 
 	#const FOREST_A 								56 		/* RAIN_FOREST */
 	#const FOREST_B 								56 		/* RAIN_FOREST */
@@ -119,7 +146,7 @@ create_terrain FOREST_A
 	set_avoid_player_start_areas
 }
 
-create_terrain FOREST_B
+create_terrain FOREST_A
 {
 	base_terrain								Terra
 	number_of_tiles								540
@@ -133,15 +160,15 @@ create_terrain FOREST_B
 
 create_terrain Terra2
 {
-	base_terrain								Terra
 	if GELIDO
-		clumping_factor							10
-		number_of_clumps						20
+		land_percent							10
 	else
-		clumping_factor							2
-		number_of_clumps						25
+		land_percent							35
 	endif
-	land_percent								35
+	base_terrain								Terra
+	clumping_factor								2
+	number_of_clumps							25
+	
 	set_scale_by_groups
 }
 
@@ -257,8 +284,8 @@ create_object Domestic_FoodBoy
 	set_place_for_every_player
 	set_gaia_object_only
 	set_loose_grouping
-	min_distance_to_players						10
-	max_distance_to_players						10
+	min_distance_to_players						12
+	max_distance_to_players						14
 }
 
 create_object Domestic_FoodBoy
@@ -338,7 +365,7 @@ create_object Predator_A
 	group_variance								2
 	set_loose_grouping
 	group_placement_radius						7
-	min_distance_to_players						22
+	min_distance_to_players						26
 	set_scaling_to_map_size
 	min_distance_group_placement				2
 	temp_min_distance_group_placement			16
