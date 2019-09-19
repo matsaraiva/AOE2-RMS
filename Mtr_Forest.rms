@@ -6,10 +6,10 @@ start_random
 	
 	#define TEMPERADO
 	
-	#const Domestic_FoodBoy 						594 	/* SHEEP */
-	#const Pacific_FoodBoy_A 						65 	/* DEER */
+	#const Domestic 							594 	/* SHEEP */
+	#const Runner 								65 	/* DEER */
 
-	#const Lureable_FoodBoy 						48 	/* BOAR */
+	#const Lure 								48 	/* BOAR */
 
 	#const Predator_A 							126 	/* WOLF */
 	#const Predator_B 							486 	/* BEAR */	
@@ -19,7 +19,7 @@ start_random
 	#const A_Tree 								413 	/* SNOW_PINE */
 	#const B_Tree 								413 	/* SNOW_PINE */
 
-	#const Fruit_Bush 							59 	/* FORAGE */
+	#const Fruit 								59 	/* FORAGE */
 
 	#const FOREST_A 							21 	/* SNOW_FOREST */
 	#const FOREST_B 							21 	/* SNOW_FOREST */
@@ -34,10 +34,10 @@ start_random
 	
 	#define TEMPERADO
 	
-	#const Domestic_FoodBoy 						594 	/* SHEEP */
-	#const Pacific_FoodBoy_A 						65 	/* DEER */
+	#const Domestic 							594 	/* SHEEP */
+	#const Runner 								65 	/* DEER */
 
-	#const Lureable_FoodBoy 						48 	/* BOAR */
+	#const Lure 								48 	/* BOAR */
 
 	#const Predator_A 							126 	/* WOLF */
 	#const Predator_B 							126 	/* WOLF */
@@ -47,7 +47,7 @@ start_random
 	#const A_Tree 								411 	/* FOREST_TREE */
 	#const B_Tree 								411 	/* FOREST_TREE */
 
-	#const Fruit_Bush 							59 	/* FORAGE */
+	#const Fruit 								59 	/* FORAGE */
 
 	#const FOREST_A 							10 	/* FOREST */
 	#const FOREST_B 							18 	/* BAMBOO */
@@ -62,10 +62,10 @@ start_random
 	
 	#define TROPICAL
 	
-	#const Domestic_FoodBoy 						833 	/* TURKEY */
-	#const Pacific_FoodBoy_A 						65 	/* DEER */
+	#const Domestic 							833 	/* TURKEY */
+	#const Runner 								65 	/* DEER */
 
-	#const Lureable_FoodBoy 						822 	/* JAVELINA */
+	#const Lure 								822 	/* JAVELINA */
 
 	#const Predator_A 							812 	/* JAGUAR */
 	#const Predator_B 							812 	/* JAGUAR */
@@ -75,7 +75,7 @@ start_random
 	#const A_Tree 								351 	/* PALM_TREE */
 	#const B_Tree 								351 	/* PALM_TREE */
 
-	#const Fruit_Bush 							1059 	/* ORANGE */
+	#const Fruit 								1059 	/* ORANGE */
 
 	#const FOREST_A 							17 	/* JUNGLE */
 	#const FOREST_B 							17 	/* JUNGLE */
@@ -90,10 +90,10 @@ start_random
 	
 	#define UMIDO
 	
-	#const Domestic_FoodBoy 						1142 	/* WATERBUFFALO +50 Food */
-	#const Pacific_FoodBoy_A 						65 	/* DEER */
+	#const Domestic 							1142 	/* WATERBUFFALO +50 Food */
+	#const Runner 								65 	/* DEER */
 
-	#const Lureable_FoodBoy 						1139 	/* RHINOCEROS +60 Food */
+	#const Lure 								1139 	/* RHINOCEROS +60 Food */
 
 	#const Predator_A 							1137 	/* TIGER */
 	#const Predator_B 							1135 	/* KOMODO */
@@ -103,7 +103,7 @@ start_random
 	#const A_Tree 								351 	/* PALM_TREE */
 	#const B_Tree 								351 	/* PALM_TREE */
 
-	#const Fruit_Bush 							1059 	/* ORANGE */
+	#const Fruit 								1059 	/* ORANGE */
 
 	#const FOREST_A 							56 	/* RAIN_FOREST */
 	#const FOREST_B 							56 	/* RAIN_FOREST */
@@ -279,7 +279,7 @@ create_object B_Tree
 	min_distance_group_placement						1
 }
 
-create_object Domestic_FoodBoy
+create_object Domestic
 {
 	set_place_for_every_player
 	set_loose_grouping
@@ -287,7 +287,7 @@ create_object Domestic_FoodBoy
 	max_distance_to_players							3
 }
 
-create_object Domestic_FoodBoy
+create_object Domestic
 {
 	if UMIDO /* 300 Food */
 		number_of_objects						3
@@ -301,7 +301,7 @@ create_object Domestic_FoodBoy
 	max_distance_to_players							14
 }
 
-create_object Domestic_FoodBoy
+create_object Domestic
 {
 	if UMIDO /* 750 Food */
 		number_of_objects						2
@@ -321,7 +321,7 @@ create_object Domestic_FoodBoy
 }   
 /*comida domestica: 1200 umido 1400 resto*/
 
-create_object Lureable_FoodBoy
+create_object Lure
 {
 	set_place_for_every_player
 	set_gaia_object_only
@@ -333,7 +333,7 @@ create_object Lureable_FoodBoy
 }
 /*comida de lure padrao: 800 umido 680 resto*/
 
-create_object Lureable_FoodBoy
+create_object Lure
 {
 	set_place_for_every_player
 	set_gaia_object_only
@@ -347,7 +347,7 @@ create_object Lureable_FoodBoy
 if TROPICAL
 	
 else
-	create_object Pacific_FoodBoy_A
+	create_object Runner
 {
 	set_place_for_every_player
 	set_gaia_object_only
@@ -358,7 +358,7 @@ else
 	max_distance_to_players							20
 	min_distance_group_placement						2
 }
-	create_object Pacific_FoodBoy_A
+	create_object Runner
 {
 	set_place_for_every_player
 	set_gaia_object_only
@@ -402,7 +402,7 @@ create_object Bird_A
 	set_scaling_to_map_size
 }
 
-create_object Fruit_Bush
+create_object Fruit
 {
 	set_place_for_every_player
 	set_gaia_object_only
@@ -417,7 +417,7 @@ create_object Fruit_Bush
 	min_distance_group_placement						6
 }
 
-create_object Fruit_Bush
+create_object Fruit
 {
 	set_place_for_every_player
 	set_gaia_object_only
