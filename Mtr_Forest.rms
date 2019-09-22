@@ -29,7 +29,7 @@ start_random
 	
 /* ******************************************************************************************************************* */
 
-	percent_chance	10 /* Basico */
+	percent_chance	15 /* Basico */
 	
 	#define TEMPERADO
 	
@@ -57,7 +57,7 @@ start_random
 	
 /* ******************************************************************************************************************* */
 	
-	percent_chance	15 /* Tropical */
+	percent_chance	10 /* Tropical */
 	
 	#define TROPICAL
 	
