@@ -144,7 +144,7 @@ create_terrain FOREST_A
 	base_terrain								Terra
 	land_percent								32
 	number_of_clumps							24
-	clumping_factor								20
+	clumping_factor								25
 	set_scale_by_groups
 	set_avoid_player_start_areas
 }
@@ -158,7 +158,7 @@ create_terrain FOREST_B
 	set_scale_by_size
 	set_scale_by_groups
 	set_avoid_player_start_areas
-	spacing_to_other_terrain_types						2
+	spacing_to_other_terrain_types						3
 }
 
 create_terrain Terra2
